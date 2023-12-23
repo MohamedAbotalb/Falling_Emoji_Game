@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial';
+}
+body {
+  background-image: url('../images/background.jpg');
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+.container {
+  display: flex;
+  width: 70%;
+  margin: 250px auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+h1 {
+  font-size: 60px;
+  margin-bottom: 80px;
+  color: orange;
+  text-transform: capitalize;
+}
+.username {
+  height: 50px;
+  width: 300px;
+  font-size: 25px;
+  outline: 0;
+  border: 0;
+  border-bottom: 1px solid gray;
+  background-color: transparent;
+  margin-bottom: 50px;
+}
+.username::placeholder {
+  text-transform: capitalize;
+  font-size: 20px;
+}
+.username:focus {
+  border-bottom: 1px solid orange;
+}
+.play {
+  font-size: 20px;
+  padding: 10px 30px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  text-transform: capitalize;
+  background-color: transparent;
+}
+.play:hover {
+  cursor: pointer;
+  background-color: orange;
+  transition: 0.5s;
+}
