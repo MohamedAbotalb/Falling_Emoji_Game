@@ -2,6 +2,7 @@ export class Player {
   #name;
   #score;
   static #players;
+  static #currentPlayer;
 
   constructor(name, score = 0) {
     this.name = Player.#pascalCase(name);
@@ -35,14 +36,54 @@ export class Player {
     return Player.#players;
   }
 
-  static #addPlayer(player) {
+  static set currentPlayer(playerName) {
+    let message = '';
+    let player = Player.#find(playerName);
+
+    if (!player) {
+      player = new Player(playerName);
+      Player.#add(player);
+      message = `Welcome ${player.name}`;
+    } else {
+      message = `Welcome ${player.name}\nYour Last Score is ${player.score}`;
+    }
+
+    const { name, score } = player;
+    Player.#currentPlayer = player;
+    sessionStorage.setItem(
+      'currentPlayer',
+      JSON.stringify({ name, score, message })
+    );
+  }
+  static get currentPlayer() {
+    const storedPlayer = sessionStorage.getItem('currentPlayer');
+
+    Player.#currentPlayer = storedPlayer ? JSON.parse(storedPlayer) : '';
+
+    return Player.#currentPlayer;
+  }
+
+  static #add(player) {
     const { name, score } = player;
     const players = Player.players;
     players.push({ name, score });
     Player.players = players;
   }
-  static get addPlayer() {
-    return Player.#addPlayer;
+
+  static #find(playerName) {
+    const players = Player.players;
+    const player = players.find(
+      (item) => item.name.toLowerCase() === playerName.toLowerCase()
+    );
+    return player;
+  }
+
+  static update(playerName, newScore) {
+    const player = Player.#find(playerName);
+    if (player) {
+      player.score = newScore;
+      Player.players = players;
+    }
   }
 
   static #pascalCase(input) {
