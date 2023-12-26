@@ -38,7 +38,9 @@ export class Player {
 
   static set currentPlayer(playerName) {
     let message = '';
-    let player = Player.#find(playerName);
+    let player = Player.players.find(
+      (item) => item.name.toLowerCase() === playerName.toLowerCase()
+    );
 
     if (!player) {
       player = new Player(playerName);
@@ -70,16 +72,11 @@ export class Player {
     Player.players = players;
   }
 
-  static #find(playerName) {
+  static update(playerName, newScore) {
     const players = Player.players;
     const player = players.find(
       (item) => item.name.toLowerCase() === playerName.toLowerCase()
     );
-    return player;
-  }
-
-  static update(playerName, newScore) {
-    const player = Player.#find(playerName);
     if (player) {
       player.score = newScore;
       Player.players = players;
