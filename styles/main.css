@@ -48,8 +48,68 @@ h1 {
   text-transform: capitalize;
   background-color: transparent;
 }
+#start:hover,
 .play:hover {
   cursor: pointer;
   background-color: orange;
   transition: 0.5s;
+}
+
+#start {
+  display: block;
+  padding: 25px 50px;
+  font-size: 20px;
+  text-transform: capitalize;
+  margin: 20% auto;
+  background-color: transparent;
+  outline: 0;
+  border: 1px solid gray;
+}
+
+.game-container {
+  display: flex;
+  justify-content: space-around;
+}
+.game-counter-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10% auto;
+}
+
+.game-counter-container img,
+.game-counter-container span {
+  flex: 1 0 50px;
+  margin: 10px;
+}
+.game-counter-container img {
+  width: 75px;
+  margin-bottom: 25px;
+}
+
+.game-counter-container span {
+  font-size: 30px;
+}
+.timer {
+  order: 1;
+  font-size: 40px;
+  margin-left: 30%;
+}
+.emoji-counter {
+  display: flex;
+  flex-direction: column;
+}
+.emoji-counter span {
+  text-align: center;
+}
+.game-box {
+  position: relative;
+  border: 5px solid orange;
+  width: 820px;
+  height: 750px;
+  margin: 100px auto;
+}
+.game-box img {
+  position: absolute;
+  max-width: 100%;
+  height: 75px;
 }
